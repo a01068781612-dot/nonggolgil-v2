@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>*{box-sizing:border-box;margin:0}body{font-family:Pretendard,sans-serif;color:#111827;background:#fff}
+.f{width:1400px;height:320px;padding:8px 8px;display:flex;gap:6px;background:#fff}
+.c{border:2.5px solid #94a3b8;border-radius:10px;padding:4px 12px;background:#f8fafc;display:flex;flex-direction:column;justify-content:center}
+.c h4{font-size:30px;font-weight:800;line-height:1.15;margin-bottom:3px;letter-spacing:-.3px}
+.c p{white-space:nowrap;font-size:27px;line-height:1.2;color:#1f2937;letter-spacing:-.4px}
+.g{border-color:#16a34a;background:#f0fdf4}.b{border-color:#2563eb;background:#eff6ff}.o{border-color:#ea580c;background:#fff7ed}
+.col{display:flex;flex-direction:column;gap:6px;flex:1}
+.ar{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#475569;font-size:19px;font-weight:700;width:50px;text-align:center;line-height:1.1}
+.ar b{font-size:30px}.s{color:#64748b}
+</style></head><body>
+<div id="b" class="f">
+ <div class="col" style="flex:1.05">
+  <div class="c g" style="flex:1.25"><h4>① 사용자 화면(브라우저)</h4><p>PC·태블릿·스마트폰<br>주소·마을 이름 검색, 지도 클릭<br><b>진입 판정·도착 지점·호스 계산</b></p></div>
+  <div class="c" style="flex:1"><h4>⑤ 마을 데이터(web/data)</h4><p>239개 마을 도로망(폭·꺾임각)<br>책자 222개 마을 · 소화전 171개</p></div>
+ </div>
+ <div class="ar"><b>⇄</b>키<br>없음</div>
+ <div class="col" style="flex:.92">
+  <div class="c b" style="flex:1"><h4>② 서버<br>(Cloudflare Pages)</h4><p><b>키는 서버에만 보관</b><br>/api/route — 경로<br>/api/brief — AI 5줄 요약<br>/api/ledger — 건축물대장</p></div>
+ </div>
+ <div class="ar"><b>⇄</b>키<br>사용</div>
+ <div class="col" style="flex:1.1">
+  <div class="c" style="flex:1.25"><h4>③ 외부 서비스</h4><p>경로: T맵 → OSRM(대체)<br>AI: Gemini Flash-Lite·Flash·Gemma 4<br>건축물대장: 공공데이터포털</p></div>
+  <div class="c o" style="flex:1"><h4>④ VWorld — 브라우저 직접 호출</h4><p>위성지도 · 주소→좌표 · 건물 찾기</p></div>
+ </div>
+</div></body></html>

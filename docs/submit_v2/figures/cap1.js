@@ -1,0 +1,10 @@
+const { chromium } = require('playwright');
+const D=process.argv[2];
+(async()=>{const b=await chromium.launch();
+ const p=await b.newPage({viewport:{width:1440,height:900},deviceScaleFactor:2});
+ await p.goto('https://fireway119.pages.dev/',{waitUntil:'networkidle'}).catch(()=>{}); await p.waitForTimeout(3000);
+ await p.screenshot({path:D+'/h_pc.png'});
+ const t=await b.newPage({viewport:{width:1280,height:800},deviceScaleFactor:2,isMobile:true,hasTouch:true});
+ await t.goto('https://fireway119.pages.dev/',{waitUntil:'networkidle'}).catch(()=>{}); await t.waitForTimeout(3000);
+ await t.screenshot({path:D+'/h_tab.png'});
+ await b.close();})();

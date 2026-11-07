@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>*{box-sizing:border-box;margin:0}body{font-family:Pretendard,sans-serif;color:#1f2937;background:#fff}
+.f{width:1400px;height:320px;padding:14px 16px;display:flex;gap:12px;background:#fff}
+.c{border:2px solid #cbd5e1;border-radius:10px;padding:9px 12px;background:#f8fafc}.c h4{font-size:15px;margin-bottom:5px}.c p{font-size:12.5px;line-height:1.5;color:#374151}
+.g{border-color:#16a34a;background:#f0fdf4}.b{border-color:#2563eb;background:#eff6ff}.o{border-color:#ea580c;background:#fff7ed}
+.col{display:flex;flex-direction:column;gap:10px;flex:1}.ar{display:flex;align-items:center;justify-content:center;color:#64748b;font-size:13px;text-align:center;width:70px;flex-direction:column}
+.ar b{font-size:22px}
+.lane{flex:1;display:flex;align-items:center;gap:10px}.tag{font-size:13px;font-weight:700;width:120px;text-align:right}
+</style></head><body>
+<!-- 2B: 3열 + 아래 데이터 -->
+<div id="b" class="f">
+ <div class="col"><div class="c g" style="flex:1"><h4>① 사용자 화면(브라우저)</h4><p>PC·태블릿·스마트폰<br>주소·마을 이름 검색, 지도 클릭<br><b>진입 판정·도착 지점·호스 계산</b><br><span style="color:#6b7280">graph_engine.js</span></p></div>
+  <div class="c" style="flex:.8"><h4>⑤ 마을 데이터(web/data)</h4><p>239개 마을 도로망(폭·꺾임각)<br>책자 222개 마을 · 소화전 171개</p></div></div>
+ <div class="ar"><b>⇄</b>키 없음</div>
+ <div class="col"><div class="c b" style="flex:1"><h4>② 서버(Cloudflare Pages)</h4><p><b>키는 서버에만 보관</b><br>/api/route — 경로<br>/api/brief — AI 5줄 요약<br>/api/ledger — 건축물대장</p></div></div>
+ <div class="ar"><b>⇄</b>키 사용</div>
+ <div class="col"><div class="c" style="flex:1"><h4>③ 외부 서비스</h4><p>T맵 → OSRM(대체)<br>Gemini Flash-Lite·Flash·Gemma 4<br>건축물대장(공공데이터포털)</p></div>
+  <div class="c o" style="flex:.8"><h4>④ VWorld — 브라우저 직접 호출</h4><p>위성지도·주소→좌표·건물 찾기</p></div></div>
+</div>
+<div style="height:20px"></div>
+<!-- 2C: 두 갈래 흐름 -->
+<div id="c" class="f" style="flex-direction:column;gap:10px">
+ <div class="lane"><div class="tag" style="color:#2563eb">키가 필요한 호출</div>
+  <div class="c g" style="flex:1"><h4>① 브라우저</h4><p>판정·경로·호스 계산</p></div><div class="ar"><b>→</b></div>
+  <div class="c b" style="flex:1.2"><h4>② 서버(Cloudflare)</h4><p>키 보관 · route · brief · ledger</p></div><div class="ar"><b>→</b></div>
+  <div class="c" style="flex:1.6"><h4>③ 외부 서비스</h4><p>T맵(→OSRM) · Gemini·Gemma 4 · 건축물대장</p></div></div>
+ <div class="lane"><div class="tag" style="color:#ea580c">지도·주소 호출</div>
+  <div class="c g" style="flex:1"><h4>① 브라우저</h4><p>지도 표시 · 주소 검색</p></div><div class="ar"><b>→</b>직접</div>
+  <div class="c o" style="flex:2.8"><h4>④ VWorld(국토교통부)</h4><p>위성지도 · 주소→좌표 · 건물 찾기 (해외 서버 차단 → 브라우저에서 직접)</p></div></div>
+ <div class="lane"><div class="tag" style="color:#374151">내장 데이터</div>
+  <div class="c" style="flex:1"><h4>⑤ web/data</h4><p>13개 읍면 239개 마을 도로망(폭·꺾임각) · 책자 222개 마을 진입곤란 표 · 소화전 171개 — 서버 없이 브라우저에서 계산</p></div></div>
+</div>
+</body></html>

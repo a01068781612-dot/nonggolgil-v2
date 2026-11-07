@@ -1,0 +1,15 @@
+const { chromium } = require('playwright');
+const D=process.argv[2];
+(async()=>{const b=await chromium.launch();
+ const p=await b.newPage({viewport:{width:1440,height:900},deviceScaleFactor:2});
+ await p.goto('https://fireway119.pages.dev/',{waitUntil:'networkidle'}).catch(()=>{});
+ await p.fill('input[placeholder^="예: 의령군"]','가미마을'); await p.keyboard.press('Enter');
+ await p.waitForTimeout(12000);
+ await p.locator('[data-drawer-tab="brief"]').first().click().catch(()=>{});
+ await p.getByText('건물·AI').first().click().catch(()=>{}); await p.waitForTimeout(1500);
+ await p.screenshot({path:D+'/b_1.png'});
+ await p.click('#btn-ai-brief').catch(e=>console.log('ai',e.message)); await p.waitForTimeout(15000);
+ await p.screenshot({path:D+'/b_2.png'});
+ await p.evaluate(()=>{const e=document.querySelector('#btn-ai-brief'); if(e) e.scrollIntoView({block:'start'});}); await p.waitForTimeout(800);
+ await p.screenshot({path:D+'/b_3.png'});
+ await b.close();})();

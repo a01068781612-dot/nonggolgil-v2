@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>*{box-sizing:border-box;margin:0}body{font-family:Pretendard,sans-serif;color:#111827;background:#fff}
+.f{width:1400px;height:170px;padding:6px 6px;display:flex;flex-direction:column;gap:5px;background:#fff;margin-bottom:20px}
+.row{display:flex;gap:2px;align-items:stretch;flex:1}
+.s{flex:1;border:2.5px solid #94a3b8;border-radius:9px;text-align:center;background:#f8fafc;display:flex;flex-direction:column;justify-content:center;padding:0 4px;white-space:nowrap}
+.s b{font-size:25px;letter-spacing:-.5px;line-height:1.15}.s small{font-size:18px;color:#374151;letter-spacing:-.5px;line-height:1.2}
+.ar{display:flex;align-items:center;font-size:24px;color:#64748b;width:22px;justify-content:center}
+.g{border-color:#16a34a;background:#f0fdf4}.b{border-color:#2563eb;background:#eff6ff}.o{border-color:#ea580c;background:#fff7ed}
+.bar{border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;letter-spacing:-.4px}
+.big b{font-size:30px}.big small{font-size:20px}
+</style></head><body>
+<!-- A: 원본 구성 그대로 6단계 -->
+<div id="a" class="f"><div class="row" style="flex:1.9">
+ <div class="s g"><b>신고 주소·마을 이름</b><small>지도 클릭도 가능</small></div><div class="ar">›</div>
+ <div class="s"><b>건물 확인</b><small>건축물대장 → 화재 유형</small></div><div class="ar">›</div>
+ <div class="s"><b>진입 판정</b><small>도로 폭·꺾임각 계산</small></div><div class="ar">›</div>
+ <div class="s"><b>도착 지점·경로</b><small>차량별 2.0·2.5·2.8m</small></div><div class="ar">›</div>
+ <div class="s"><b>호스 매수</b><small>도착 지점→신고 지점</small></div><div class="ar">›</div>
+ <div class="s b"><b>AI 5줄 요약</b><small>위험·차량·호스·급수·주의</small></div></div>
+ <div class="row"><div class="bar g" style="flex:5.05;border:2.5px solid #16a34a">사실 = 도로망 계산 그대로 (AI 없이 동작)</div><div class="bar b" style="flex:1;border:2.5px solid #2563eb">문장만 AI</div></div></div>
+<!-- B: 5단계(도착·호스 합침) 큰 글자 -->
+<div id="b" class="f big"><div class="row" style="flex:1.9">
+ <div class="s g"><b>신고 주소</b><small>마을 이름·지도 클릭</small></div><div class="ar">›</div>
+ <div class="s"><b>건물 확인</b><small>건축물대장 → 화재 유형</small></div><div class="ar">›</div>
+ <div class="s"><b>진입 판정</b><small>도로 폭·꺾임각</small></div><div class="ar">›</div>
+ <div class="s"><b>도착 지점·호스</b><small>차량별 경로·호스 매수</small></div><div class="ar">›</div>
+ <div class="s b"><b>AI 5줄 요약</b><small>위험·차량·호스·급수·주의</small></div></div>
+ <div class="row"><div class="bar g" style="flex:4.05;border:2.5px solid #16a34a">사실 = 도로망 계산 그대로 (AI 없이 동작)</div><div class="bar b" style="flex:1;border:2.5px solid #2563eb">문장만 AI</div></div></div>
+<!-- C: 6단계 제목만(부제 없음) 아주 큰 글자 -->
+<div id="c" class="f"><div class="row" style="flex:1.6">
+ <div class="s g"><b style="font-size:29px">신고 주소</b></div><div class="ar">›</div>
+ <div class="s"><b style="font-size:29px">화재 유형</b></div><div class="ar">›</div>
+ <div class="s"><b style="font-size:29px">폭·꺾임 판정</b></div><div class="ar">›</div>
+ <div class="s"><b style="font-size:29px">차량별 도착</b></div><div class="ar">›</div>
+ <div class="s"><b style="font-size:29px">호스 매수</b></div><div class="ar">›</div>
+ <div class="s b"><b style="font-size:29px">AI 5줄 요약</b></div></div>
+ <div class="row"><div class="bar g" style="flex:5.05;border:2.5px solid #16a34a;font-size:26px">사실 = 도로망 계산 그대로 (AI 없이 동작)</div><div class="bar b" style="flex:1;border:2.5px solid #2563eb;font-size:26px">문장만 AI</div></div></div>
+</body></html>

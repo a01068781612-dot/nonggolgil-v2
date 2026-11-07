@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:Pretendard,sans-serif;background:#fff;color:#1f2937}
+.fig{background:#fff;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:10px;align-items:stretch}.box{border:2px solid #cbd5e1;border-radius:10px;padding:8px 12px;flex:1;background:#f8fafc}
+.box h4{font-size:15px;margin-bottom:4px}.box p{font-size:12.5px;line-height:1.45;color:#374151}
+.g{border-color:#16a34a;background:#f0fdf4}.b{border-color:#2563eb;background:#eff6ff}.o{border-color:#ea580c;background:#fff7ed}.r{border-color:#dc2626;background:#fef2f2}
+.ar{display:flex;align-items:center;font-size:20px;color:#64748b}
+#f2{width:1400px;height:320px}#f3{width:1400px;height:170px;justify-content:center}
+.step{flex:1;border:2px solid #cbd5e1;border-radius:9px;text-align:center;padding:7px 4px;background:#f8fafc}
+.step b{display:block;font-size:15px}.step small{font-size:11.5px;color:#6b7280}
+.bar{border-radius:8px;text-align:center;font-weight:700;font-size:14px;padding:6px}
+</style></head><body>
+<div id="f2" class="fig">
+ <div class="row" style="flex:1.25">
+  <div class="box g"><h4>① 사용자 화면(브라우저)</h4><p>PC·태블릿·스마트폰<br>· 주소·마을 이름 검색, 지도에서 건물 클릭<br>· 도로 폭·꺾임 판정, 차량별 도착 지점·경로·호스 계산<br><span style="color:#6b7280">(graph_engine.js — 서버 부담 없음)</span></p></div>
+  <div class="ar">⇄</div>
+  <div class="box b"><h4>② 서버(Cloudflare Pages)</h4><p>· 키 보관(화면에 키 없음)<br>· /api/route 경로 · /api/brief AI 요약<br>· /api/ledger 건축물대장 · /api/config</p></div>
+  <div class="ar">⇄</div>
+  <div class="box"><h4>③ 외부 서비스</h4><p>· 경로: T맵 → OSRM(대체)<br>· AI: Gemini Flash-Lite·Flash·Gemma 4(자동 전환)<br>· 건축물대장: 공공데이터포털</p></div>
+ </div>
+ <div class="row" style="flex:1">
+  <div class="box o"><h4>④ VWorld(국토교통부) — 브라우저에서 직접 호출</h4><p>위성지도·주소→좌표·건물 찾기 <span style="color:#6b7280">(해외 서버 차단 대응)</span></p></div>
+  <div class="box"><h4>⑤ 마을 데이터(web/data)</h4><p>13개 읍면 239개 마을 도로망(폭·꺾임각) + 책자 222개 마을 진입곤란 표 · 소화전 171개</p></div>
+ </div>
+</div>
+<div style="height:20px"></div>
+<div id="f3" class="fig">
+ <div class="row">
+  <div class="step g"><b>신고 주소·마을 이름</b><small>지도 클릭도 가능</small></div><div class="ar">→</div>
+  <div class="step"><b>건물 확인</b><small>건축물대장 → 화재 유형</small></div><div class="ar">→</div>
+  <div class="step"><b>진입 판정</b><small>도로 폭·꺾임각 계산</small></div><div class="ar">→</div>
+  <div class="step"><b>도착 지점·경로</b><small>차량별(2.0·2.5·2.8m)</small></div><div class="ar">→</div>
+  <div class="step"><b>호스 매수</b><small>도착 지점→신고 지점</small></div><div class="ar">→</div>
+  <div class="step b"><b>AI 5줄 요약</b><small>위험·차량·호스·급수·주의</small></div>
+ </div>
+ <div class="row"><div class="bar g" style="flex:5;border:2px solid #16a34a">사실 = 도로망 계산 그대로 (AI 없이 동작)</div><div class="bar b" style="flex:1.2;border:2px solid #2563eb">문장만 AI</div></div>
+</div>
+</body></html>
