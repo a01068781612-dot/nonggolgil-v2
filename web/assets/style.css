@@ -2404,3 +2404,23 @@ label.lg-row { cursor: pointer; }
 
 /* 26.11.07 범례 박스 2배 (PC) */
 @media (min-width: 841px) { .map-legend-float { zoom: 2; left: 7px; bottom: 12px; } .map-legend-float .legend-float-body { max-height: calc((100vh - 220px) / 2); } }
+
+/* 26.11.08 범례·기능 패널 1/2 크기 (가로·세로) */
+@media (min-width: 841px) {
+  .map-legend-float { zoom: 1; }
+  .map-legend-float .legend-float-body { max-height: calc(100vh - 220px); }
+  .naver-dock { width: 300px; }
+  .naver-drawer > * { zoom: 0.875; }
+  .naver-drawer { padding: 4px 4px 8px !important; }
+  .dock-brand { padding: 6px 8px 4px; gap: 6px; }
+  .dock-brand-badge { font-size: 0.6rem; padding: 2px 6px; }
+  .dock-brand-title { font-size: 0.88rem; }
+  .rail-top-group .rail-tab { padding: 6px 2px 5px; gap: 4px; }
+  .rail-top-group .rail-tab .rail-label { font-size: 0.8rem; }
+  .rail-top-group .rail-tab .rail-icon { font-size: 0.75rem; }
+  .map-floating-search, body:not(.left-panel-collapsed) .map-floating-search { zoom: 1; top: 14px; left: 14px; width: calc(100vw - 300px - 100px); max-width: 900px; }
+  body:has(.naver-drawer.collapsed) .map-floating-search { width: calc(100vw - 100px); }
+  .leaflet-top.leaflet-left { right: 314px !important; top: 80px !important; }
+  .leaflet-bottom.leaflet-right { right: 300px; }
+}
+@media (min-width: 841px) { .map-floating-search, body:not(.left-panel-collapsed) .map-floating-search { zoom: 2; top: 7px; left: 7px; width: calc((100vw - 300px - 30px) / 2); max-width: none; } body:has(.naver-drawer.collapsed) .map-floating-search { width: calc((100vw - 60px) / 2); } .leaflet-top.leaflet-left { top: 140px !important; } }
