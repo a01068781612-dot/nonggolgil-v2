@@ -2424,3 +2424,20 @@ label.lg-row { cursor: pointer; }
   .leaflet-bottom.leaflet-right { right: 300px; }
 }
 @media (min-width: 841px) { .map-floating-search, body:not(.left-panel-collapsed) .map-floating-search { zoom: 2; top: 7px; left: 7px; width: calc((100vw - 300px - 30px) / 2); max-width: none; } body:has(.naver-drawer.collapsed) .map-floating-search { width: calc((100vw - 60px) / 2); } .leaflet-top.leaflet-left { top: 140px !important; } }
+
+/* 26.11.08 검색창 높이 1/2(가로 유지), 기능 패널 글자 1.5배 */
+@media (min-width: 841px) {
+  .map-floating-search, body:not(.left-panel-collapsed) .map-floating-search { zoom: 1; top: 10px; left: 10px; width: calc(100vw - 300px - 30px); padding: 6px 10px; }
+  body:has(.naver-drawer.collapsed) .map-floating-search { width: calc(100vw - 60px); }
+  .map-floating-search #village-search { font-size: 1.15rem; height: 40px; }
+  .map-floating-search #btn-address-search { font-size: 1.1rem; padding: 8px 18px; }
+  .map-floating-search .search-brand { font-size: 0.95rem; height: 30px; min-width: 40px; }
+  .leaflet-top.leaflet-left { top: 80px !important; }
+  .naver-drawer > * { zoom: 1.3125; }
+  .dock-brand-badge { font-size: 0.9rem; padding: 3px 9px; }
+  .dock-brand-title { font-size: 1.32rem; }
+  .rail-top-group .rail-tab .rail-label { font-size: 1.2rem; }
+  .rail-top-group .rail-tab .rail-icon { font-size: 1.1rem; }
+  .rail-top-group .rail-tab { padding: 9px 2px 8px; }
+}
+@media (min-width: 841px) { .naver-dock { width: 420px; } .map-floating-search, body:not(.left-panel-collapsed) .map-floating-search { width: calc(100vw - 420px - 30px); } .leaflet-top.leaflet-left { right: 434px !important; } .leaflet-bottom.leaflet-right { right: 420px; } }
