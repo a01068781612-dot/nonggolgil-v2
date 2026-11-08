@@ -3371,21 +3371,21 @@
     const hydLabelStr =
       lastMission.nearestHydrant && lastMission.nearestHydrant.label
         ? /^(거점소화전|중계급수거점)-/.test(String(lastMission.nearestHydrant.label))
-          ? `물탱크차 중계급수 후보 거점(${String(lastMission.nearestHydrant.label).replace(/^거점소화전-/, '중계급수거점-')}, ${lastMission.nearestHydrant.distanceM}m · 실물 소화전 미확인으로 후착 물탱크차 중계 급수 필수)`
-          : `${lastMission.nearestHydrant.label} (${lastMission.nearestHydrant.distanceM}m) 점령 급수`
+          ? `마을 안 실물 소화전 미확인 — 후착 물탱크차 중계 급수 (하차 지점에서 약 ${lastMission.nearestHydrant.distanceM}m 넓은 교차로)`
+          : `소화전 (하차 지점에서 약 ${lastMission.nearestHydrant.distanceM}m) 점령 급수`
         : '자체 물탱크 급수 및 인근 자연수리 확보';
     const ruleSummary = lastMission.directVehicleAccess
       ? `[출동차량] ${spec.name} (기준폭 ${spec.threshold}m)\n` +
         `[출동경로] ${startDesc}\n` +
         viaLine +
-        `[진입판정] 마을 입구부터 화점 근처(${lastMission.stagingNodeId})까지 마을 내 ${lastMission.villageVehicleDistanceM}m (총 ${(lastMission.vehicleDistanceM / 1000).toFixed(2)}km) 차량 직접 진입 가능 (예상 총 ${formatSecKo(lastMission.totalMissionSec)})\n` +
+        `[진입판정] 마을 입구부터 신고 지점 근처까지 마을 내 ${lastMission.villageVehicleDistanceM}m (총 ${(lastMission.vehicleDistanceM / 1000).toFixed(2)}km) 차량 직접 진입 가능 (예상 총 ${formatSecKo(lastMission.totalMissionSec)})\n` +
         `[전술지시] 현장 도착 즉시 화점 전면 부서 후 ${lastMission.hoseDistanceM}m(15m 호스 ${lastMission.requiredHose15mCount}본, 예비포함 ${lastMission.requiredHoseWithSpareCount}본) 직접 방수 전개\n` +
         `[급수대책] ${hydLabelStr}`
       : `[출동차량] ${spec.name} (기준폭 ${spec.threshold}m · 최소회전반경 ${spec.minTurnRadiusM}m)\n` +
         `[출동경로] ${startDesc}\n` +
         viaLine +
         `[진입제한] ${lastMission.bottleneck ? lastMission.bottleneck.message : '골목 협착'}\n` +
-        `[1차 차량접근] ${startDesc}에서 하차 거점(${lastMission.stagingNodeId})까지 마을 내 ${lastMission.villageVehicleDistanceM}m (총 ${(lastMission.vehicleDistanceM / 1000).toFixed(2)}km) 진입 후 안전 부서\n` +
+        `[1차 차량접근] ${startDesc}에서 신고 지점 ${lastMission.hoseDistanceM}m 앞 하차 지점까지 마을 내 ${lastMission.villageVehicleDistanceM}m (총 ${(lastMission.vehicleDistanceM / 1000).toFixed(2)}km) 진입 후 안전 부서\n` +
         `[2차 호스연장] 하차 거점에서 화점까지 ${lastMission.hoseDistanceM}m 구간 15m 소방호스 최소 ${lastMission.requiredHose15mCount}본(예비포함 ${lastMission.requiredHoseWithSpareCount}본) 도보 연장 및 중계방수 실시 (예상 총 ${formatSecKo(lastMission.totalMissionSec)})\n` +
         `[급수대책] ${hydLabelStr}`;
 

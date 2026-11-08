@@ -24,6 +24,7 @@
     '{{MISSION_BRIEF}}',
     '',
     '규칙:',
+    '- 도로 지점 번호(X0194, D0012 같은 영문+숫자 기호)는 절대 쓰지 말 것. 위치는 "신고 지점에서 30m 떨어진 골목"처럼 거리로 설명',
     '- 아래 5줄 형식만 출력. 인사말·서론·결론·구분선·굵게(**) 금지',
     '- 각 줄 40자 이내, 명사형으로 끝맺음, 숫자(거리·본수·층수)는 그대로',
     '- 주어진 정보에 없는 내용은 지어내지 말 것',
@@ -317,15 +318,15 @@
     const totalSec = Number.isFinite(Number(m.totalMissionSec)) ? Number(m.totalMissionSec) : 0;
     const hydStr = m.nearestHydrant
       ? /^(거점소화전|중계급수거점)-/.test(String(m.nearestHydrant.label || ''))
-        ? `실물 소화전 미확인 · 물탱크차 중계급수 후보 거점(${String(m.nearestHydrant.label).replace(/^거점소화전-/, '중계급수거점-')}, 하차 거점 이격 ${m.nearestHydrant.distanceM}m — 후착 물탱크차 중계 급수 필수)`
-        : `${m.nearestHydrant.label} (하차 거점으로부터 이격 ${m.nearestHydrant.distanceM}m)`
+        ? `마을 안 실물 소화전 미확인 — 후착 물탱크차 중계 급수 필요 (중계 차량은 하차 지점에서 약 ${m.nearestHydrant.distanceM}m 떨어진 넓은 교차로에 부서 가능)`
+        : `소화전 (하차 지점에서 약 ${m.nearestHydrant.distanceM}m)`
       : '인근 소화전 미확보 (자체 물탱크 방수 및 후착 물탱크차 중계 급수 필수)';
 
     const lines = [
       `- 출동 관할/마을: ${regionName || '경상남도 의령군'} ${m.villageName ? m.villageName + '마을' : ''}`.trim(),
       `- 출동 차량 제원: ${spec.name} (요구 도로폭 ${spec.threshold}m · 최소회전반경 ${spec.minTurnRadiusM || 8.2}m)`,
       `- 1차 차량 진입 판정: ${accessStr}`,
-      `- 1차 차량 하차·전개 거점: 정점 ${m.stagingNodeId || '-'} (마을 범위 진입 후 ${vilVehDistM} / 소방서 출발 총 ${vehDistTotalKm})`,
+      `- 1차 차량 하차 지점: 신고 지점에서 ${hoseDistM}m 떨어진 골목 (마을 입구에서 ${vilVehDistM} 진입 / 소방서 출발 총 ${vehDistTotalKm})`,
       `- 진입 제한 병목 사유: ${bneckMsg}`,
       `- 2차 소방호스 연장 거리 및 소요량: ${hoseDistM}m (15m 소방호스 최소 ${hoseCount}본, 예비 포함 ${hoseSpareCount}본)`,
       `- 예상 총 소요시간: ${totalSec}초 (${formatSecKo(totalSec)})`,
@@ -382,8 +383,8 @@
       : hoseCount + 1;
 
     const hoseGuideline = m.directVehicleAccess
-      ? `화점 전면(${m.stagingNodeId || '-'}) 안전 부서 후 ${hoseDistM}m 구간 15m 호스 ${hoseCount}본(예비 포함 ${hoseSpareCount}본) 즉시 전개`
-      : `하차 거점(${m.stagingNodeId || '-'}) 부서 후 협소 골목 ${hoseDistM}m 구간 15m 호스 최소 ${hoseCount}본(예비 포함 ${hoseSpareCount}본) 도보 연장 및 중계·이동식 동력펌프 방수`;
+      ? `신고 지점 앞 안전 부서 후 ${hoseDistM}m 구간 15m 호스 ${hoseCount}본(예비 포함 ${hoseSpareCount}본) 즉시 전개`
+      : `신고 지점에서 ${hoseDistM}m 떨어진 골목에 부서 후 협소 골목 ${hoseDistM}m 구간 15m 호스 최소 ${hoseCount}본(예비 포함 ${hoseSpareCount}본) 도보 연장 및 중계·이동식 동력펌프 방수`;
 
     return [
       ruleSummary ? String(ruleSummary).trim() : formatMissionContext(mission, '', regionName),
